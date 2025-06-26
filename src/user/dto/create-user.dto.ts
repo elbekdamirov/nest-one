@@ -26,7 +26,10 @@ export class CreateUserDto {
     example: "Uzbek13#4d",
     description: "Foydalanuvchi paroli",
   })
-  @IsStrongPassword({ minLength: 6 })
+  @IsStrongPassword(
+    { minLength: 6 },
+    { message: "Parol yetarlicha mustahkam emas" }
+  )
   password: string;
 
   @ApiProperty({

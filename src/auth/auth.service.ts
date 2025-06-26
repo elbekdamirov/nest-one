@@ -25,7 +25,14 @@ export class AuthService {
       role: user.roles,
     };
 
-    return { token: this.jwtService.sign(payload) };
+    let token: any;
+    try {
+      token = this.jwtService.sign(payload);
+    } catch (error) {
+      console.log(error);
+    }
+
+    return token;
   }
 
   async signup(createUserDto: CreateUserDto) {
